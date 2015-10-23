@@ -18,19 +18,19 @@ map_redis_uid() {
 create_socket_dir() {
   mkdir -p /run/redis
   chmod -R 0755 /run/redis
-  chown -R ${REDIS_USER}:${REDIS_USER} /run/redis
+  chown -R ${REDIS_USER}:${REDIS_USER} /run/redis || echo 'Could not chown'
 }
 
 create_data_dir() {
   mkdir -p ${REDIS_DATA_DIR}
   chmod -R 0755 ${REDIS_DATA_DIR}
-  chown -R ${REDIS_USER}:${REDIS_USER} ${REDIS_DATA_DIR}
+  chown -R ${REDIS_USER}:${REDIS_USER} ${REDIS_DATA_DIR} || echo 'Could not chown'
 }
 
 create_log_dir() {
   mkdir -p ${REDIS_LOG_DIR}
   chmod -R 0755 ${REDIS_LOG_DIR}
-  chown -R ${REDIS_USER}:${REDIS_USER} ${REDIS_LOG_DIR}
+  chown -R ${REDIS_USER}:${REDIS_USER} ${REDIS_LOG_DIR} || echo 'Could not chown'
 }
 
 map_redis_uid
